@@ -63,6 +63,15 @@ function playRound(computerChoice, humanChoice) {
   }else{
     divElement.textContent = "Wrong input, enter \"rock, paper or scissors\""
   }
+
+  /*if (computerScore === 5) {
+    
+    divElement.textContent = "computer Won";
+  
+  }else {
+    divElement.textContent = "You won"
+  }
+   */
   
 }
 
@@ -77,16 +86,47 @@ buttons.forEach((button) => {
     let humanSelection = playerSelection;
 
     playRound(computerSelection, humanSelection);
+    
+    
+    if (computerScore === 5) {
+      
+      divElement.textContent = "computer Won";
+      
+      humanScore = 0;
+      computerScore = 0;
+
+      computerScores.textContent = `computer score is ${computerScore}`; 
+      humanScores.textContent = `human score is ${humanScore}`;
+
+      button.removeEventListener("click");
+      
+    
+    }else if (humanScore === 5) {
+      divElement.textContent = "You won";
+      
+      humanScore = 0;
+      computerScore = 0;
+      
+      humanScores.textContent = `human score is ${humanScore}`;
+      computerScores.textContent = `computer score is ${computerScore}`; 
+    
+
+
+      
+      button.removeEventListener("click");
+      
+    }
+    
   });
 })
 
-if (computerScore === 5) {
+/*if (computerScore === 5) {
   divElement.textContent = "computer Won";
 
-}else {
-  divElement.textContent = "You won"
+}else if (humanScore === 5) {
+  divElement.textContent = "You won";
 }
-
+*/
 
 
 
