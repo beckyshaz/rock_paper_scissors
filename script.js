@@ -23,13 +23,22 @@ function getComputerChoice () {
 }*/
 
 const divElement = document.querySelector("div");
-divElement.style.backgroundColor = "blue";
-//divElement.textContent = "";
+divElement.style.backgroundColor = "yellow";
+
+
 
 const humanScores = document.querySelector(".human-score");
 
 const computerScores = document.querySelector(".computer-score");
 
+const humanSpan = document.createElement("span");
+
+humanScores.appendChild(humanSpan);
+
+
+
+const compSpan = document.createElement("span");
+computerScores.appendChild(compSpan);
 
 function playRound(computerChoice, humanChoice) {
   if (computerChoice === humanChoice){
@@ -37,41 +46,38 @@ function playRound(computerChoice, humanChoice) {
 
   }else if (computerChoice === "paper" && humanChoice === "rock") {
     divElement.textContent = "computer won this round!, paper beats rock";
-    //computerScore += 1;
-    computerScores.textContent = `computer score is ${computerScore += 1}`;
+    
+    compSpan.textContent = ` ${computerScore += 1}`;
+  
 
   }else if (computerChoice === "rock" && humanChoice === "paper"){
     divElement.textContent = "You won this round!, paper beats rock";
-    humanScores.textContent = `human score is ${humanScore += 1}`;
+    humanSpan.textContent = ` ${humanScore += 1}`;
+    
 
   }else if (computerChoice === "scissors" && humanChoice === "paper"){
     divElement.textContent = "Computer won this round!, scissors beats paper";
-    computerScores.textContent = `computer score is ${computerScore += 1}`;
+    compSpan.textContent = ` ${computerScore += 1}`;
 
   }else if (computerChoice === "paper"  && humanChoice === "scissors"){
     divElement.textContent = "You won this round!, scissors beats paper";
-    humanScores.textContent = `human score is ${humanScore += 1}`;
+    humanSpan.textContent = ` ${humanScore += 1}`;
+    
 
   }else if ( computerChoice === "rock" && humanChoice === "scissors"){
     divElement.textContent = "Computer won this round!, rock beats scissors";
-    computerScores.textContent = `computer score is ${computerScore += 1}`;
+    compSpan.textContent = ` ${computerScore += 1}`;
 
   }else if (computerChoice === "scissors" && humanChoice === "rock"){
     divElement.textContent = "You won this round!, rock beats scissors";
-    humanScores.textContent = `human score is ${humanScore += 1}`;
+    humanSpan.textContent = ` ${humanScore += 1}`;
+
 
   }else{
     divElement.textContent = "Wrong input, enter \"rock, paper or scissors\""
   }
 
-  /*if (computerScore === 5) {
-    
-    divElement.textContent = "computer Won";
   
-  }else {
-    divElement.textContent = "You won"
-  }
-   */
   
 }
 
@@ -90,29 +96,30 @@ buttons.forEach((button) => {
     
     if (computerScore === 5) {
       
-      divElement.textContent = "computer Won";
+      divElement.textContent = "Computer Won";
+      
       
       humanScore = 0;
       computerScore = 0;
 
-      computerScores.textContent = `computer score is ${computerScore}`; 
-      humanScores.textContent = `human score is ${humanScore}`;
+      compSpan.textContent = ` ${computerScore}`; 
+      humanSpan.textContent = ` ${humanScore}`;
+
+      
 
       button.removeEventListener("click");
       
     
     }else if (humanScore === 5) {
-      divElement.textContent = "You won";
+      divElement.textContent = "You Won";
+      
       
       humanScore = 0;
       computerScore = 0;
       
-      humanScores.textContent = `human score is ${humanScore}`;
-      computerScores.textContent = `computer score is ${computerScore}`; 
+      humanSpan.textContent = ` ${humanScore}`;
+      compSpan.textContent = ` ${computerScore}`; 
     
-
-
-      
       button.removeEventListener("click");
       
     }
