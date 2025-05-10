@@ -22,8 +22,8 @@ function getComputerChoice () {
   return humanChoices;
 }*/
 
-const divElement = document.querySelector("div");
-divElement.style.backgroundColor = "yellow";
+const divElement = document.querySelector(".start");
+//divElement.style.backgroundColor = "yellow";
 
 
 
