@@ -74,7 +74,7 @@
     align-items: center;
     justify-content: center;
     /*gap: 200px;*/
-    margin-top: 130px;
+    margin-top: 100px;
     flex-grow: 1;
 }
 
@@ -115,4 +115,8 @@
 
 .play:active {
     background-color: palegreen;
+}
+
+h1 {
+    text-align: center;
 }
