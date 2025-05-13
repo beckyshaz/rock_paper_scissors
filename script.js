@@ -13,6 +13,10 @@ function getComputerChoice () {
     return choice;
 }
 
+
+let humanWinMsg = "You Won!";
+
+let compWinMsg = "Computer Won";
 //let computerChoice = getComputerChoice();
 
 //prompting users to enter their choice
@@ -78,74 +82,42 @@ function playRound(computerChoice, humanChoice) {
 
 const buttons = document.querySelectorAll("button");
 
-buttons.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    if (event.target.value === "play"){
-      computerScore = 0;
-      humanScore = 0;
-      compSpan.textContent = ` ${computerScore}`; 
-      humanSpan.textContent = ` ${humanScore}`;
 
+const buttonClickHandler = ((event) => {
+  if (event.target.value === "play") {
+    divElement.textContent = "Start";
+    computerScore = 0;
+    humanScore = 0;
+    compSpan.textContent = ` ${computerScore}`; 
+    humanSpan.textContent = ` ${humanScore}`;
+    buttons.forEach((button) => button.addEventListener("click", buttonClickHandler));
+
+  }
+  let playerSelection = event.target.value;
+
+  let computerSelection = getComputerChoice();
+
+  let humanSelection = playerSelection;
+
+  playRound(computerSelection, humanSelection);
+  if (computerScore === 5 || humanScore === 5 ) {
+    
+    if (computerScore > humanScore) {
+      divElement.textContent = `${compWinMsg}`;
+    }else {
+      divElement.textContent = `${humanWinMsg}`;
     }
-
-    let playerSelection = event.target.value;
-
-    let computerSelection = getComputerChoice();
-
-    let humanSelection = playerSelection;
-
-    playRound(computerSelection, humanSelection);
-
-    
-    
-    if (computerScore === 5) {
   
-      
-      divElement.textContent = "Computer Won";
-      
-      
-      humanScore = 0;
-      computerScore = 0;
+    buttons.forEach((button) => {
+      if (button.value === "rock" || button.value === "paper" || button.value === "scissors") {
+        button.removeEventListener("click", buttonClickHandler);
+      }
+    });
 
-      compSpan.textContent = ` ${computerScore}`; 
-      humanSpan.textContent = ` ${humanScore}`;
-
-      
-
-     //button.removeEventListener("click");
-      
-    }else if (humanScore === 5) {
-    
-      divElement.textContent = "You Won";
-
-      
-  
-      humanScore = 0;
-      computerScore = 0;
-      
-      humanSpan.textContent = ` ${humanScore}`;
-      compSpan.textContent = ` ${computerScore}`; 
-    
-      //button.removeEventListener("click");
-      
-    }
-    
-  });
+    }  
 })
 
-
-
-//let humanSelectionLower = getHumanChoice();
-
-//let humanSelection = humanSelectionLower.toLowerCase();
-
-//let computerSelection = getComputerChoice();
-//let humanSelection = playerSelection;
-   
-    //console.log(humanSelection);
-
-//playRound(computerSelection, humanSelection);
-
+buttons.forEach((button) => button.addEventListener("click", buttonClickHandler));
 
 //function to play round five times and logs winner
 /*function  playGame() { 
